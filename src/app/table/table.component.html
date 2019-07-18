@@ -1,0 +1,28 @@
+<table class="table table-striped table-borderless table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">City</th>
+        <!-- <th scope="col">Ride in group</th>
+        <th scope="col">Day of the week</th>
+        --> <th scope="col">Post</th> <!-- 
+         <th scope="col">Albums</th> -->
+        <th scope="col">Photos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let oUser of aUsers">
+        <td>{{ oUser.username }}</td>
+        <td>{{ oUser.name }}</td>
+        <td><a>{{ oUser.email }}</a></td>
+        <td><a>{{ oUser.address.city }}</a></td>
+        <td><a>{{ oUser.posts }}</a></td>
+        <td>{{ oUser.photos }}</td>
+        <!-- td>{{ oUser.name }}</td>
+        <td>{{ oUser.name }}</td> -->
+
+      </tr>
+    </tbody>
+  </table>
