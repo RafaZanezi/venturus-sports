@@ -1,0 +1,47 @@
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col">
+                <span class="placeholder">Username</span>
+                <input type="text">
+                <span class="placeholder">Name</span>
+                <input type="text">
+                <span class="placeholder">E-mail</span>
+                <input type="text">
+            </div>
+
+            <div class="col">
+                <span class="placeholder">City</span>
+                <input type="text">
+
+                <div class="row">
+                    <div class="col">
+                        <span class="placeholder">Days of the week</span>
+                        <div class="row">
+                            <div class="col" *ngFor="let oRideOpt of aRideInGroup">
+                                <label class="check" for="radio"></label>
+                                <span class="check-text">{{oRideOpt.name}}
+                                    <input type="radio" id="radio">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <span class="placeholder">Days of the week</span>
+                        <div class="row">
+                            <div class="col" *ngFor="let oDay of aDias">
+                                <label class="check" for="checkbox"></label>
+                                <span class="check-text">{{oDay.name}}
+                                    <input type="checkbox" id="checkbox">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

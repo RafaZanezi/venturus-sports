@@ -1,28 +1,59 @@
 <table class="table table-striped table-borderless table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Username</th>
-        <th scope="col">Name</th>
-        <th scope="col">E-mail</th>
-        <th scope="col">City</th>
-        <!-- <th scope="col">Ride in group</th>
-        <th scope="col">Day of the week</th>
-        --> <th scope="col">Post</th> <!-- 
-         <th scope="col">Albums</th> -->
-        <th scope="col">Photos</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let oUser of aUsers">
-        <td>{{ oUser.username }}</td>
-        <td>{{ oUser.name }}</td>
-        <td><a>{{ oUser.email }}</a></td>
-        <td><a>{{ oUser.address.city }}</a></td>
-        <td><a>{{ oUser.posts }}</a></td>
-        <td>{{ oUser.photos }}</td>
-        <!-- td>{{ oUser.name }}</td>
-        <td>{{ oUser.name }}</td> -->
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Name</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">City</th>
+      <th scope="col">Ride in group</th>
+      <th scope="col">Day of the week</th>
+      <th scope="col">Post</th>
+      <th scope="col">Albums</th>
+      <th scope="col">Photos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let oUser of aUsers">
+      <td>{{ oUser.username }}</td>
+      <td>{{ oUser.name }}</td>
+      <td><a>{{ oUser.email }}</a></td>
+      <td><a>{{ oUser.address.city }}</a></td>
+      <td>{{ oUser.rideOption }}</td>
+      <td>
+        <span *ngFor="let oDay of oUser.dayOfWeek; index as nIndex">
+          {{ oDay.name }}<span *ngIf="nIndex !== oUser.dayOfWeek.length - 1">, </span>
+        </span>
+      </td>
+      <td><a>{{ oUser.posts }}</a></td>
+      <td><a>{{ oUser.albums }}</a></td>
+      <td>{{ oUser.photos }}</td>
+      <td #action>
+        <button type="button" class="btn-remove" data-toggle="modal" data-target="#modalConfirmacao" (click)="nIdUser = oUser.id">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-      </tr>
-    </tbody>
-  </table>
+<!-- Modal -->
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacao"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalConfirmacao">Excluir registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja excluir este registro?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="remover()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+@import "../../styles.sass"
+    
+.placeholder
+    display: flex
+    margin-top: 15px
+
+input
+    padding: 5px
+    border: 0.09em solid $accent
+    border-radius: 0.3em
+    font-family: "FontAwesome", Arial, Helvetica, sans-serif
+    width: 350px
+    padding: 0.3em
+    &:focus
+        box-shadow: 0 0 0 0
+        outline: 0
+        border: 0.09em solid $dark
+
+label.check
+    border: 0.09em solid $accent
+    border-radius: 0.3em
+    font-family: "FontAwesome", Arial, Helvetica, sans-serif
+    width: 36px
+    height: 36px
+    margin-right: 0.3em
+    display: inline-block
+
+div label .check
+    display: inline
+
+.check-text
+    position: absolute
+    margin-top: 5px
+    float: right
+    display: inline-block
+
+    input
+        display: none
+

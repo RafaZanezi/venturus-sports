@@ -23,51 +23,11 @@ export class TableDataService {
   }
 
   buscarAlbuns(): Observable<any> {
-    return this.oHttp.get(`${this.sUrl}/albuns`);
+    return this.oHttp.get(`${this.sUrl}/albums`);
   }
 
   buscarPosts(): Observable<any> {
     return this.oHttp.get(`${this.sUrl}/posts`);
-  }
-
-  rideInGroup(): Observable<any> {
-    return of([
-      {
-        name: 'Always'
-      },
-      {
-        name: 'Sometimes'
-      },
-      {
-        name: 'Never'
-      }
-    ]);
-  }
-
-  daysOfWeek(): Observable<any> {
-    return of([
-      {
-        name: 'Sun'
-      },
-      {
-        name: 'Mon'
-      },
-      {
-        name: 'Tue'
-      },
-      {
-        name: 'Wed'
-      },
-      {
-        name: 'Thu'
-      },
-      {
-        name: 'Fri'
-      },
-      {
-        name: 'Sat'
-      }
-    ]);
   }
 
 }

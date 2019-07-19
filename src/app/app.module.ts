@@ -7,11 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableDataService } from './services/table-data.service';
 import { TableComponent } from './table/table.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { SharedService } from './services/shared.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent
+    TableComponent,
+    RegistrationComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,8 @@ import { TableComponent } from './table/table.component';
     HttpClientModule
   ],
   providers: [
-    TableDataService
+    TableDataService,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })
