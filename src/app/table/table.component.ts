@@ -40,7 +40,8 @@ export class TableComponent implements OnInit {
 
   private carregarDados() {
     this.oTableService.buscarUsuarios().subscribe(res => {
-      this.aUsers = res;
+      this.aUsers = res.concat(this.oUserService.aNewUsers);
+      this.oUserService.nUsersLength = this.aUsers.length;
 
       this.oTableService.buscarAlbuns().subscribe(res => {
         this.aAlbuns = res
@@ -59,22 +60,26 @@ export class TableComponent implements OnInit {
               user.albums = aUserAlbum.length;
               user.photos = aUserPhotos.length;
               user.posts = aUserPosts.length;
-              user.dayOfWeek = new Array<any>();
 
-              var randDay = this.aDias[Math.floor(Math.random() * this.aDias.length)];
+              if (!user.dayOfWeek) {
+                user.dayOfWeek = new Array<any>();
 
-              if (randDay.index === 1) {
-                user.dayOfWeek.push({ name: 'Every day' });
-              } else {
-                for (let i = randDay.index; i <= this.aDias.length; i++) {
-                  const oDay = this.aDias.find(item => item.index == i);
-                  user.dayOfWeek.push(oDay);
+                var randDay = this.aDias[Math.floor(Math.random() * this.aDias.length)];
+
+                if (randDay.index === 1) {
+                  user.dayOfWeek.push({ name: 'Every day' });
+                } else {
+                  for (let i = randDay.index; i <= this.aDias.length; i++) {
+                    const oDay = this.aDias.find(item => item.index == i);
+                    user.dayOfWeek.push(oDay);
+                  }
                 }
               }
 
-              var randRideOption = this.aRideInGroup[Math.floor(Math.random() * this.aRideInGroup.length)];
-              user.rideOption = randRideOption.name;
-
+              if(!user.rideOption) {
+                var randRideOption = this.aRideInGroup[Math.floor(Math.random() * this.aRideInGroup.length)];
+                user.rideOption = randRideOption.name;
+              }
             });
           });
         });

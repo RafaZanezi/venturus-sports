@@ -4,8 +4,13 @@ import { of } from 'rxjs/internal/observable/of';
 
 @Injectable()
 export class SharedService {
+    public aNewUsers: Array<any>;
+    public nUsersLength: number;
 
-    constructor() { }
+    constructor() {
+        this.aNewUsers = new Array<any>();
+        this.nUsersLength = 0;
+    }
 
     rideInGroup(): Observable<any> {
         return of([

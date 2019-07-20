@@ -1,47 +1,94 @@
-<div class="container">
-    <form>
-        <div class="row">
-            <div class="col">
-                <span class="placeholder">Username</span>
-                <input type="text">
-                <span class="placeholder">Name</span>
-                <input type="text">
-                <span class="placeholder">E-mail</span>
-                <input type="text">
-            </div>
+<div class="container-fluid main transparent-container">
+    <div class="row">
+        <h2>Registration</h2>
+        <div class="col-sm">
+            <hr style="border-width: 3px">
+        </div>
+    </div>
 
-            <div class="col">
-                <span class="placeholder">City</span>
-                <input type="text">
-
-                <div class="row">
-                    <div class="col">
-                        <span class="placeholder">Days of the week</span>
-                        <div class="row">
-                            <div class="col" *ngFor="let oRideOpt of aRideInGroup">
-                                <label class="check" for="radio"></label>
-                                <span class="check-text">{{oRideOpt.name}}
-                                    <input type="radio" id="radio">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <span class="placeholder">Days of the week</span>
-                        <div class="row">
-                            <div class="col" *ngFor="let oDay of aDias">
-                                <label class="check" for="checkbox"></label>
-                                <span class="check-text">{{oDay.name}}
-                                    <input type="checkbox" id="checkbox">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="icon">
+            <span>Need help?</span>
+            <div class="icon-text">
+                <img src="../assets/beach_float.png" alt="Need help?">
+                <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</h5>
             </div>
         </div>
-    </form>
+
+        <div class="icon">
+            <span>Why Register?</span>
+            <div class="icon-text">
+                <img src="../assets/hearth.png" alt="Why Register?">
+                <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</h5>
+            </div>
+        </div>
+
+        <div class="icon">
+            <span>What people are saying</span>
+            <div class="icon-text">
+                <img src="../assets/smile.png" alt="What people are saying">
+                <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid main">
+    <div class="col-sm">
+        <hr style="border-width: 3px">
+    </div>
+    <div class="container">
+        <form [formGroup]="oForm">
+            <div class="row">
+                <div class="col">
+                    <span class="placeholder">Username</span>
+                    <input type="text" formControlName="edtUserName">
+                    <span class="placeholder">Name</span>
+                    <input type="text" formControlName="edtName">
+                    <span class="placeholder">E-mail</span>
+                    <input type="email" formControlName="edtEmail">
+                </div>
+
+                <div class="col">
+                    <span class="placeholder">City</span>
+                    <input type="text" formControlName="edtCity">
+
+                    <div class="row">
+                        <div class="col">
+                            <span class="placeholder">Ride in group?</span>
+                            <div class="row">
+                                <div class="col" *ngFor="let oRideOpt of aRideInGroup; index as nIndex">
+                                    <label class="container-label-radio" [for]="'radio-' + nIndex">{{ oRideOpt.name }}
+                                        <input type="radio" [id]="'radio-' + nIndex" (click)="saveOptions(nIndex)">
+                                        <span class="radiomark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <span class="placeholder">Days of the week</span>
+                            <div class="row">
+                                <div class="col" *ngFor="let oDay of aDias; index as nIndex">
+                                    <label class="container-label" [for]="'check-' + nIndex">{{ oDay.name }}
+                                        <input type="checkbox" [id]="'check-' + nIndex" (click)="saveDays(nIndex)">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary group" type="button" (click)="addNewUser()" routerLink='../'>Save</button>
+            <button class="btn btn-light group" type="button" routerLink='../'>Discard</button>
+        </form>
+    </div>
 </div>

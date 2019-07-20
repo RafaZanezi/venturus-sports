@@ -10,6 +10,7 @@ import { TableComponent } from './table/table.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { SharedService } from './services/shared.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { SharedService } from './services/shared.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
     AngularFontAwesomeModule,
     NgbModule,
     HttpClientModule
